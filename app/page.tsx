@@ -141,9 +141,6 @@ export default function NGOLandingPage() {
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-                Learn Our Story
-              </Button>
             </div>
           </div>
         </div>
@@ -278,9 +275,6 @@ export default function NGOLandingPage() {
                   <Heart className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
-                Become a Volunteer
-              </Button>
             </div>
           </div>
         </div>
