@@ -70,12 +70,12 @@ export default function DonatePage() {
   const [donationId, setDonationId] = useState<string | null>(null)
 
   const presetAmounts = [
-    { value: "25", label: "$25", description: "Provides clean water for 1 person for a month" },
-    { value: "50", label: "$50", description: "Feeds a family of 4 for a week" },
-    { value: "100", label: "$100", description: "Sponsors a child's education for a month" },
-    { value: "250", label: "$250", description: "Provides medical care for 10 people" },
-    { value: "500", label: "$500", description: "Builds a water well for a community" },
-    { value: "1000", label: "$1000", description: "Funds a complete education program" },
+    { value: "25", label: "₹25", description: "Provides clean water for 1 person for a month" },
+    { value: "50", label: "₹50", description: "Feeds a family of 4 for a week" },
+    { value: "100", label: "₹100", description: "Sponsors a child's education for a month" },
+    { value: "250", label: "₹250", description: "Provides medical care for 10 people" },
+    { value: "500", label: "₹500", description: "Builds a water well for a community" },
+    { value: "1000", label: "₹1000", description: "Funds a complete education program" },
   ]
 
   const donationPurposes = [
@@ -365,7 +365,7 @@ export default function DonatePage() {
                 <div className="space-y-2">
                   <Label htmlFor="customAmount">Or enter a custom amount</Label>
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">$</span>
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">₹</span>
                     <Input
                       id="customAmount"
                       type="number"
@@ -569,7 +569,7 @@ export default function DonatePage() {
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b border-border">
                     <span>Donation Amount:</span>
-                    <span className="text-2xl font-bold text-primary">${getSelectedAmount()}</span>
+                    <span className="text-2xl font-bold text-primary">₹{getSelectedAmount()}</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-border">
                     <span>Donation Type:</span>
@@ -676,7 +676,7 @@ export default function DonatePage() {
                   ) : (
                     <div className="flex items-center space-x-2">
                       <Heart className="h-5 w-5" />
-                      <span>Donate ${getSelectedAmount()}</span>
+                      <span>Donate ₹{getSelectedAmount()}</span>
                     </div>
                   )}
                 </Button>

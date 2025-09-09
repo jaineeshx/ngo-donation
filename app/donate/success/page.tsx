@@ -69,14 +69,14 @@ export default function DonationSuccessPage() {
         <div style="background: #2a2a2a; padding: 30px; border-radius: 12px; margin-bottom: 30px;">
           <h3 style="margin: 0 0 20px 0; color: #ff5722; font-size: 20px;">Thank You, ${donationData.donorName || "Generous Donor"}!</h3>
           <p style="margin: 0 0 20px 0; color: #cccccc; line-height: 1.6;">
-            Your generous donation of <strong style="color: #ff5722;">$${donationData.amount}</strong> will make a real difference in the lives of those we serve.
+            Your generous donation of <strong style="color: #ff5722;">₹${donationData.amount}</strong> will make a real difference in the lives of those we serve.
           </p>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
             <div>
               <div style="border-bottom: 1px solid #444; padding: 12px 0; display: flex; justify-content: space-between;">
                 <span style="color: #999;">Amount:</span>
-                <span style="font-weight: bold; color: #ff5722;">$${donationData.amount}</span>
+                <span style="font-weight: bold; color: #ff5722;">₹${donationData.amount}</span>
               </div>
               <div style="border-bottom: 1px solid #444; padding: 12px 0; display: flex; justify-content: space-between;">
                 <span style="color: #999;">Type:</span>
@@ -126,7 +126,7 @@ export default function DonationSuccessPage() {
   const handleShare = useCallback(async () => {
     if (!donationData) return
 
-    const shareText = `I just donated $${donationData.amount} to Hope Foundation! Join me in making a difference. 🌟`
+    const shareText = `I just donated ₹${donationData.amount} to Hope Foundation! Join me in making a difference. 🌟`
 
     try {
       if (navigator.share) {
@@ -209,7 +209,7 @@ export default function DonationSuccessPage() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-border">
                   <span className="text-muted-foreground">Amount:</span>
-                  <span className="text-2xl font-bold text-primary">${donationData.amount}</span>
+                  <span className="text-2xl font-bold text-primary">₹{donationData.amount}</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-border">
                   <span className="text-muted-foreground">Type:</span>
@@ -239,7 +239,7 @@ export default function DonationSuccessPage() {
               <Users className="h-12 w-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-4">Your Impact</h3>
               <p className="text-lg text-muted-foreground text-pretty mb-4">
-                Your ${donationData.amount} donation will help us provide essential services to those in need.
+                Your ₹{donationData.amount} donation will help us provide essential services to those in need.
               </p>
             </div>
           </CardContent>
