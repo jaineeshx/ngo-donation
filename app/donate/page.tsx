@@ -148,6 +148,7 @@ export default function DonatePage() {
         handler: async (response: any) => {
           // Payment successful, verify on server
           try {
+            console.log("[v0] Starting payment verification")
             const verifyResponse = await fetch("/api/payments/verify", {
               method: "POST",
               headers: {
@@ -161,18 +162,36 @@ export default function DonatePage() {
               }),
             })
 
-            const verifyResult = await verifyResponse.json()
+            let verifyResult
+            const contentType = verifyResponse.headers.get("content-type")
 
-            if (verifyResponse.ok) {
-              setSubmitStatus("success")
-              setSubmitMessage("Payment successful! Thank you for your generous donation.")
+            if (contentType && contentType.includes("application/json")) {
+              verifyResult = await verifyResponse.json()
             } else {
-              throw new Error(verifyResult.error || "Payment verification failed")
+              // If response is not JSON, get text for debugging
+              const errorText = await verifyResponse.text()
+              console.error("[v0] Non-JSON response:", errorText)
+              throw new Error("Server returned invalid response format")
+            }
+
+            if (verifyResponse.ok && verifyResult.success) {
+              console.log("[v0] Payment verification successful, redirecting to success page")
+              const successUrl = new URL("/donate/success", window.location.origin)
+              successUrl.searchParams.set("amount", getSelectedAmount())
+              successUrl.searchParams.set("purpose", formData.purpose)
+              successUrl.searchParams.set("type", formData.donationType)
+              successUrl.searchParams.set("name", `${formData.firstName} ${formData.lastName}`)
+
+              window.location.href = successUrl.toString()
+            } else {
+              throw new Error(verifyResult?.error || "Payment verification failed")
             }
           } catch (error) {
             console.error("[v0] Payment verification error:", error)
             setSubmitStatus("error")
-            setSubmitMessage("Payment verification failed. Please contact support.")
+            setSubmitMessage(
+              error instanceof Error ? error.message : "Payment verification failed. Please contact support.",
+            )
           } finally {
             setIsSubmitting(false)
           }

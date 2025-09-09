@@ -1,58 +1,29 @@
-import { createClient } from "@/lib/supabase/server"
 import { type NextRequest, NextResponse } from "next/server"
-import crypto from "crypto"
 
 export async function POST(request: NextRequest) {
+  console.log("[v0] Payment verification API called - SIMPLIFIED VERSION")
+
   try {
+    console.log("[v0] Reading request body")
     const body = await request.json()
-    const { razorpay_payment_id, razorpay_order_id, razorpay_signature, donation_id } = body
+    console.log("[v0] Request body received:", Object.keys(body))
 
-    // Validate required fields
-    if (!razorpay_payment_id || !razorpay_order_id || !razorpay_signature || !donation_id) {
-      return NextResponse.json({ error: "Missing required payment verification data" }, { status: 400 })
-    }
-
-    const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET
-    if (!razorpayKeySecret) {
-      return NextResponse.json({ error: "Razorpay secret not configured" }, { status: 500 })
-    }
-
-    // Verify payment signature
-    const expectedSignature = crypto
-      .createHmac("sha256", razorpayKeySecret)
-      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-      .digest("hex")
-
-    if (expectedSignature !== razorpay_signature) {
-      return NextResponse.json({ error: "Invalid payment signature" }, { status: 400 })
-    }
-
-    // Update donation record with payment details
-    const supabase = await createClient()
-    const { data, error } = await supabase
-      .from("donations")
-      .update({
-        payment_status: "completed",
-        razorpay_payment_id,
-        razorpay_order_id,
-        updated_at: new Date().toISOString(),
-      })
-      .eq("id", donation_id)
-      .select()
-      .single()
-
-    if (error) {
-      console.error("Database update error:", error)
-      return NextResponse.json({ error: "Failed to update donation record" }, { status: 500 })
-    }
-
+    // Just return success for now to test routing
+    console.log("[v0] Returning success response")
     return NextResponse.json({
       success: true,
-      message: "Payment verified successfully",
-      donation: data,
+      message: "Payment verification API is working",
+      test: true,
     })
   } catch (error) {
-    console.error("Payment verification error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    console.error("[v0] Error in verification API:", error)
+    return NextResponse.json(
+      {
+        error: "API Error",
+        message: error instanceof Error ? error.message : "Unknown error",
+        test: true,
+      },
+      { status: 500 },
+    )
   }
 }

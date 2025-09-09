@@ -86,29 +86,27 @@ export default function NGOLandingPage() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-card border-t border-border">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="#about" className="block px-3 py-2 text-muted-foreground hover:text-primary">
-                About
-              </a>
-              <a href="#impact" className="block px-3 py-2 text-muted-foreground hover:text-primary">
-                Impact
-              </a>
-              <a href="#testimonials" className="block px-3 py-2 text-muted-foreground hover:text-primary">
-                Stories
-              </a>
-              <a href="#donate" className="block px-3 py-2 text-muted-foreground hover:text-primary">
-                Get Involved
-              </a>
-              <div className="px-3 py-2">
-                <Link href="/donate">
-                  <Button className="w-full animate-pulse-glow">Donate Now</Button>
-                </Link>
-              </div>
+        <div className={`md:hidden bg-card border-t border-border ${isMenuOpen ? "block" : "hidden"}`}>
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <a href="#about" className="block px-3 py-2 text-muted-foreground hover:text-primary">
+              About
+            </a>
+            <a href="#impact" className="block px-3 py-2 text-muted-foreground hover:text-primary">
+              Impact
+            </a>
+            <a href="#testimonials" className="block px-3 py-2 text-muted-foreground hover:text-primary">
+              Stories
+            </a>
+            <a href="#donate" className="block px-3 py-2 text-muted-foreground hover:text-primary">
+              Get Involved
+            </a>
+            <div className="px-3 py-2">
+              <Link href="/donate">
+                <Button className="w-full animate-pulse-glow">Donate Now</Button>
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </nav>
 
       {/* Hero Section */}
