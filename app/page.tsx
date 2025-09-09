@@ -17,21 +17,21 @@ export default function NGOLandingPage() {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Mr. Karan Sharma",
       role: "Beneficiary",
       content:
         "This organization changed my life completely. Their support helped me get back on my feet and build a better future for my family.",
       rating: 5,
     },
     {
-      name: "Michael Chen",
+      name: "Mr. Ashutosh S",
       role: "Volunteer",
       content:
         "Being part of this mission has been incredibly rewarding. Seeing the direct impact of our work in communities is truly inspiring.",
       rating: 5,
     },
     {
-      name: "Dr. Emily Rodriguez",
+      name: "Dr. Jyatin Mehta",
       role: "Partner Organization",
       content:
         "Their transparency and dedication to making real change sets them apart. We're proud to collaborate with such an impactful organization.",
@@ -350,8 +350,8 @@ export default function NGOLandingPage() {
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li>contact@hopefoundation.org</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Hope Street, City, State 12345</li>
+                <li>+91 98765 43210</li>
+                <li>Church Street, Bengaluru, Karnataka 560001</li>
               </ul>
             </div>
           </div>
