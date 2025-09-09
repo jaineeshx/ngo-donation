@@ -612,14 +612,15 @@ export default function DonatePage() {
               {/* Terms and Conditions */}
               <Card className="animate-fade-in-up animate-delay-400">
                 <CardContent className="pt-6">
-                  <div className="flex items-start space-x-2">
+                  <div className="flex items-start space-x-3">
                     <Checkbox
                       id="terms"
                       checked={formData.agreeToTerms}
                       onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
                       required
+                      className="mt-0.5 border-2 border-muted-foreground data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
                     />
-                    <Label htmlFor="terms" className="text-sm text-pretty">
+                    <Label htmlFor="terms" className="text-sm text-pretty cursor-pointer">
                       I agree to the{" "}
                       <a href="#" className="text-primary hover:underline">
                         Terms and Conditions
